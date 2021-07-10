@@ -35,10 +35,8 @@ int main()
 {
 	redirect_input("infile");
 	redirect_output("outfile");
-	printf("this is a test");
-	char *argv[2];
-	argv[1] = "outfile";
-	execve("/bin/cat", argv, 0); // -> this (over)writes the content of infile to outfile
+	printf("this is a test"); //writes "this is a test" to outfile
+	//execve("/bin/cat", 0, 0); // ->  (over)writes the content of infile to outfile
 	return (0);
 }
 
