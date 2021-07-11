@@ -30,6 +30,4 @@ argv[4] = file2	---> redirection; const char *file
 - need to think through how to do cmd part. 
 
 
-int execve(const char *path, char *const argv[], char *const envp[]);
-
 */
