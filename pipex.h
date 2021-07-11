@@ -31,7 +31,6 @@ int	redirect_output(const char *file);
 
 #endif
 
-
 /* MEMO MEMO MEMO
 $> ./pipex file1 cmd1 cmd2 file2 
 
