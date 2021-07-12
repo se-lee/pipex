@@ -13,12 +13,6 @@
 # define CMD2	argv[3]
 # define FILE2	argv[4]
 
-
-/*
-struct for cmd?
-int execve(const char *path, char *const argv[], char *const envp[]);
-*/
-
 typedef struct	s_cmd
 {
 	const char	*path;
@@ -29,7 +23,7 @@ typedef struct	s_cmd
 int		redirect_input(const char *file);
 int		redirect_output(const char *file);
 int		get_command(char *cmd_str, t_cmd *cmd);
-void	do_command(char *cmd_str, t_cmd *cmd);
+void	do_command(char *argv,t_cmd cmd);
 
 #endif
 
