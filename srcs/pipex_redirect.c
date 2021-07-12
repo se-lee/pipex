@@ -1,7 +1,7 @@
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 int	redirect_input(const char *file)
-{//open file 1 and send to stdin
+{//open file and send to stdin
 	int fd;
 
 	fd = open(file, O_RDONLY);
@@ -16,7 +16,7 @@ int	redirect_input(const char *file)
 }
 
 int	redirect_output(const char *file)
-{// to send the content to file2
+{// to send the content to file
 	int fd;
 
 	fd = open(file, O_CREAT | O_WRONLY, 0644); // or O_RDWR?? (0644 for rights)
