@@ -28,6 +28,8 @@ typedef struct	s_cmd
 
 int	redirect_input(const char *file);
 int	redirect_output(const char *file);
+int	get_command(char *cmd_str, t_cmd *cmd);
+
 
 #endif
 

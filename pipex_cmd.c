@@ -13,18 +13,29 @@ int	get_command(char *cmd_str, t_cmd *cmd)
 	if (cmd_sep == NULL)
 		return (-1);
 	cmd->path = ft_strjoin("/bin/", cmd_sep[0]);
-	cmd->argv = cmd_sep;
+	cmd->argv = (char *const *)cmd_sep;
 	cmd->envp = 0; // <--- ??? i dont know what to put here.
 
 	return (0);
 }
 
-void	do_command(t_cmd cmd)
+void	do_command(t_cmd cmd)	//or maybe i don't need to separate this function
 {
 	execve(cmd.path, cmd.argv, cmd.envp);
-
 	//error case ?
 }
+
+int	main(int argc, char *argv[])
+{
+	t_cmd	command;
+	
+	get_command(argv[1], &command);
+	printf("path: %s",command.path);	
+	do_command(command);
+
+	return (0);
+}
+
 
 /*
 
