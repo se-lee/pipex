@@ -1,4 +1,4 @@
-#include "../includes/pipex.h"
+#include "pipex.h"
 
 int	redirect_input(const char *file)
 {//open file and send to stdin

@@ -1,6 +1,6 @@
 #include "pipex.h"
 
-int pipex(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 		int id;
 	int fd[2];

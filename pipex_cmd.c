@@ -1,4 +1,4 @@
-#include "../includes/pipex.h"
+#include "pipex.h"
 
 // what is the path? /bin/[cmd], /sbin/[cmd] --> the command given as *path will run
 //		how many paths are there ? how to cover all ?
