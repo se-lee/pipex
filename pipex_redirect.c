@@ -1,6 +1,6 @@
 #include "pipex.h"
 
-int	redirect_input(const char *file)
+int	redirect_input(const char *file) //use fd
 {//open file and send to stdin
 	int fd;
 

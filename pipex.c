@@ -1,6 +1,6 @@
 #include "pipex.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[], char **env)
 {
 	int id;
 	int fd[2];
@@ -10,17 +10,18 @@ int main(int argc, char *argv[])
 	id = fork(); 
 	if (id > 0)
 	{
-		redirect_input(FILE1);
+	//	
+		redirect_input(argv[1]);
 		close(fd[0]);
-		do_command(CMD1, cmd);
+		do_command(argv[2], env);
 	}
 	else if(id == 0)
 	{
 		//wait here??
-		redirect_output(FILE2);
+		redirect_output(argv[4]);
 		close(fd[1]);
-		do_command(CMD2, cmd);
+		do_command(argv[3], env);
 	}
-	
+
 	return (0);
 } 
