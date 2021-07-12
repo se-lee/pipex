@@ -8,10 +8,8 @@ int	get_command(char *cmd_str, t_cmd *cmd, char **env)
 	if (sep_cmd == NULL)
 		return (-1);
 	cmd->path = ft_strjoin("/bin/", sep_cmd[0]);
-	sep_cmd[0] = cmd->path;
 	cmd->argv = (char *const *)sep_cmd;
 	cmd->envp = env;
-	printf("%s\n", env[0]);
 
 	return (0);
 }
