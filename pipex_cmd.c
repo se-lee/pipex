@@ -1,17 +1,15 @@
 #include "pipex.h"
 
-// what is the path? /bin/[cmd], /sbin/[cmd] --> the command given as *path will run
-//		how many paths are there ? how to cover all ?
 
 int	get_command(char *cmd_str, t_cmd *cmd)
 {
-	char **cmd_sep;
+	char **sep_cmd;
 
-	cmd_sep = ft_split(cmd_str, ' ');
-	if (cmd_sep == NULL)
+	sep_cmd = ft_split(cmd_str, ' ');
+	if (sep_cmd == NULL)
 		return (-1);
-	cmd->path = ft_strjoin("/bin/", cmd_sep[0]);
-	cmd->argv = (char *const *)cmd_sep;
+	cmd->path = ft_strjoin("/bin/", sep_cmd[0]);
+	cmd->argv = (char *const *)sep_cmd;
 	cmd->envp = 0; // <--- ??? not sure what to put;
 
 	return (0);
@@ -39,6 +37,8 @@ int	main(int argc, char *argv[])
 */
 
 /*
+what is the path? /bin/[cmd], /sbin/[cmd] --> the command given as *path will run
+	how many paths are there ? how to cover all ?
 
 difference between `` '' and " "
  -> works with " " but doesnt work with `` ''
@@ -52,4 +52,3 @@ NULL -> argv[2]
 if command and options (argv[1~]) don't match, display error
 
 */
-

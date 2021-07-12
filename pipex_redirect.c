@@ -30,7 +30,6 @@ int	redirect_output(const char *file)
 	return (0);
 }
 
-
 /*
 int main()
 {

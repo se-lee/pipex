@@ -25,7 +25,6 @@ int		redirect_output(const char *file);
 int		get_command(char *cmd_str, t_cmd *cmd);
 void	do_command(char *argv,t_cmd cmd);
 
-
 #endif
 
 /* MEMO MEMO MEMO
