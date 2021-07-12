@@ -19,7 +19,7 @@ int	redirect_output(const char *file)
 {// to send the content to file
 	int fd;
 
-	fd = open(file, O_CREAT | O_WRONLY, 0644); // or O_RDWR?? (0644 for rights)
+	fd = open(file, O_CREAT | O_WRONLY, 0644); // (0644 for rights)
 	if (fd < 0)
 	{
 		perror ("Fail");

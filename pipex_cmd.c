@@ -15,13 +15,12 @@ int	get_command(char *cmd_str, t_cmd *cmd)
 	return (0);
 }
 
-void	do_command(char *argv,t_cmd cmd)	//or maybe i don't need to separate this function
+void	do_command(char *argv,t_cmd cmd)
 {
 	get_command(argv, &cmd);
 	execve(cmd.path, cmd.argv, cmd.envp);
 	//error case ?
 }
-
 
 /*
 int	main(int argc, char *argv[])
@@ -40,14 +39,8 @@ int	main(int argc, char *argv[])
 what is the path? /bin/[cmd], /sbin/[cmd] --> the command given as *path will run
 	how many paths are there ? how to cover all ?
 
-difference between `` '' and " "
+difference between `` '' and " "??
  -> works with " " but doesnt work with `` ''
-
-$> ./pipex infile ``ls -l'' ``wc -l'' outfile
-
-ls -> argv[0]
--l -> argv[1]
-NULL -> argv[2]
 
 if command and options (argv[1~]) don't match, display error
 

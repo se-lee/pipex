@@ -10,15 +10,15 @@ int main(int argc, char *argv[])
 	id = fork(); 
 	if (id > 0)
 	{
-		close(fd[0]);
 		redirect_input(FILE1);
+		close(fd[0]);
 		do_command(CMD1, cmd);
 	}
-	//wait where??
 	else if(id == 0)
 	{
-		close(fd[1]);
+		//wait here??
 		redirect_output(FILE2);
+		close(fd[1]);
 		do_command(CMD2, cmd);
 	}
 	
