@@ -30,6 +30,8 @@ int	redirect_output(const char *file)
 	return (0);
 }
 
+
+/*
 int main()
 {
 	redirect_input("infile");
@@ -38,4 +40,4 @@ int main()
 	//execve("/bin/cat", 0, 0); // ->  (over)writes the content of infile to outfile
 	return (0);
 }
-
+*/

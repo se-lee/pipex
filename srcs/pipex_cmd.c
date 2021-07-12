@@ -19,12 +19,15 @@ int	get_command(char *cmd_str, t_cmd *cmd)
 	return (0);
 }
 
-void	do_command(t_cmd cmd)	//or maybe i don't need to separate this function
+void	do_command(char *cmd_str, t_cmd *cmd)	//or maybe i don't need to separate this function
 {
-	execve(cmd.path, cmd.argv, cmd.envp);
+	get_command(cmd_str, cmd);
+	execve(cmd->path, cmd->argv, cmd->envp);
 	//error case ?
 }
 
+
+/*
 int	main(int argc, char *argv[])
 {
 	t_cmd	command;
@@ -35,6 +38,7 @@ int	main(int argc, char *argv[])
 
 	return (0);
 }
+*/
 
 /*
 eg.
