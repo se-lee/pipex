@@ -25,17 +25,6 @@ int	get_command(char *cmd_str, t_cmd *cmd, char **env)
 	return (0);
 }
 
-/*
-PATH=
-/usr/local/bin:
-/usr/bin:
-/bin:
-/usr/sbin:
-/sbin:
-/usr/local/munki:
-/opt/X11/bin
-*/
-
 void	do_command(char *argv, char **env)
 {
 	t_cmd cmd;
