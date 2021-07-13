@@ -1,8 +1,8 @@
 #include "pipex.h"
 
-int	redirect_input(const char *file) //use fd
-{//open file and send to stdin
-	int fd;
+int	redirect_input(const char *file)
+{
+	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -16,10 +16,10 @@ int	redirect_input(const char *file) //use fd
 }
 
 int	redirect_output(const char *file)
-{// to send the content to file
-	int fd;
+{
+	int	fd;
 
-	fd = open(file, O_CREAT | O_WRONLY, 0644); // (0644 for rights)
+	fd = open(file, O_CREAT | O_WRONLY, 0644);
 	if (fd < 0)
 	{
 		perror ("Fail");
@@ -29,14 +29,3 @@ int	redirect_output(const char *file)
 	close(fd);
 	return (0);
 }
-
-/*
-int main()
-{
-	redirect_input("infile");
-	redirect_output("outfile");
-	printf("this is a test"); //writes "this is a test" to outfile
-	//execve("/bin/cat", 0, 0); // ->  (over)writes the content of infile to outfile
-	return (0);
-}
-*/

@@ -1,38 +1,47 @@
 #include "pipex.h"
 
-int	get_command(char *cmd_str, t_cmd *cmd, char **env)
+int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 {
 	int		i;
 	char	*path;
-	char	**sep_cmd;
-	char	**sep_path;
 
-	sep_cmd = ft_split(cmd_str, ' ');
-	if (sep_cmd == NULL)
-		return (-1);
 	i = 0;
 	path = NULL;
+	cmd->sep_cmd = ft_split(cmd_str, ' ');
+	if (cmd->sep_cmd == NULL)
+		return (-1);
 	while (env[i] != NULL && path == NULL)
 	{
 		path = ft_strstr(env[i], "PATH=");
 		i++;
 	}
 	path = ft_strtrim(path, "PATH=");
-	sep_path = ft_split(path, ':');
-//	cmd->path = ft_strjoin("/usr/bin/", sep_cmd[0]);
-	cmd->argv = (char *const *)sep_cmd;
-	cmd->envp = env;
+	cmd->sep_path = ft_split(path, ':');
+	i = 0;
+	while (cmd->sep_path[i] != NULL)
+	{
+		cmd->sep_path[i] = ft_strjoin(cmd->sep_path[i], "/");
+		cmd->sep_path[i] = ft_strjoin(cmd->sep_path[i], cmd->sep_cmd[0]);
+		i++;
+	}
 	return (0);
 }
 
-void	do_command(char *argv, char **env)
+void	do_command(char *argv, char **env, t_cmd cmd)
 {
-	t_cmd cmd;
+	int		i;
 
-	get_command(argv, &cmd, env); 
-	execve(cmd.path, cmd.argv, cmd.envp);
+	get_command(argv, env, &cmd);
+	i = 0;
+	while (cmd.sep_path[i] != NULL)
+	{
+		execve(cmd.sep_path[i], cmd.sep_cmd, env);
+		i++;
+	}
 	//error case ?
 }
+
+
 
 /*
 int	main(int argc, char *argv[])
@@ -48,9 +57,6 @@ int	main(int argc, char *argv[])
 */
 
 /*
-what is the path? /bin/[cmd], /sbin/[cmd] --> the command given as *path will run
-	how many paths are there ? how to cover all ?
-
 difference between `` '' and " "??
  -> works with " " but doesnt work with `` ''
 

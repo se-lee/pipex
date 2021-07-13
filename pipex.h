@@ -8,17 +8,21 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
+# define FILE1	1
+# define CMD1	2
+# define CMD2	3
+# define FILE2	4
+
 typedef struct	s_cmd
 {
-	const char	*path;
-	char *const *argv;
-	char *const	*envp;
+	char	**sep_path;
+	char *const *sep_cmd;
 }				t_cmd;
 
 int		redirect_input(const char *file);
 int		redirect_output(const char *file);
-int		get_command(char *cmd_str, t_cmd *cmd, char **env);
-void	do_command(char *argv, char **env);
+int	get_command(char *cmd_str, char **env, t_cmd *cmd);
+void	do_command(char *argv, char **env, t_cmd cmd);
 
 #endif
 
