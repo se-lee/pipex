@@ -2,19 +2,31 @@
 
 int	get_command(char *cmd_str, t_cmd *cmd, char **env)
 {
-	char **sep_cmd;
+	int		i;
+	char	*path;
+	char	**sep_cmd;
+	char	**sep_path;
 
 	sep_cmd = ft_split(cmd_str, ' ');
 	if (sep_cmd == NULL)
 		return (-1);
-	cmd->path = ft_strjoin("/bin/", sep_cmd[0]);
+	i = 0;
+	path = NULL;
+	while (env[i] != NULL && path == NULL)
+	{
+		path = ft_strstr(env[i], "PATH=");
+		i++;
+	}
+	path = ft_strtrim(path, "PATH=");
+	sep_path = ft_split(path, ':');
+//	cmd->path = ft_strjoin("/usr/bin/", sep_cmd[0]);
 	cmd->argv = (char *const *)sep_cmd;
 	cmd->envp = env;
-
 	return (0);
 }
 
 /*
+PATH=
 /usr/local/bin:
 /usr/bin:
 /bin:
