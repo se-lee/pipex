@@ -3,7 +3,6 @@ SRCS	=	pipex.c \
 			pipex_cmd.c \
 			pipex_redirect_pipe.c\
 
-BIN		= objs
 OBJS	= $(SRCS:.c=.o)
 NAME	= pipex
 LIBFT	= libft
@@ -19,7 +18,7 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 %.o:	%.c $(HEADER) $(LIBFT)/libft.h
-	$(CC) $(CFLAGS) -c $< -Iincludes -Ilibft -o $@
+	$(CC) $(CFLAGS) -c $< -Ilibft -o $@
 
 init:
 	$(MAKE) -C $(LIBFT)

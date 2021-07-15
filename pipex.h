@@ -13,10 +13,10 @@
 # define CMD2	3
 # define FILE2	4
 
-typedef struct	s_cmd
+typedef struct s_cmd
 {
 	char		**sep_path;
-	char *const *sep_cmd;
+	char *const	*sep_cmd;
 }				t_cmd;
 
 int		redirect_input(const char *file);

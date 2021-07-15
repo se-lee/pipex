@@ -36,7 +36,7 @@ int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 void	do_command(char *argv, char **env, t_cmd cmd)
 {
 	int		i;
-	
+
 	get_command(argv, env, &cmd);
 	i = 0;
 	while (cmd.sep_path[i] != NULL)
