@@ -27,10 +27,11 @@ int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 	return (0);
 }
 
-void	do_command(char *argv, char **env, t_cmd cmd)
+void	do_command(char *argv, char **env)
 {
 	int		i;
-
+	t_cmd cmd;
+	
 	get_command(argv, env, &cmd);
 	i = 0;
 	while (cmd.sep_path[i] != NULL)
