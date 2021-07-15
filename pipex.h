@@ -27,9 +27,7 @@ void	do_command(char *argv, char **env);
 
 #endif
 
-
 /*
-
 pipex_cmd:
         - what does strtrim do ? 
 			--> takes out every character in "reference set". not the exact string.
