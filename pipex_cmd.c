@@ -1,11 +1,5 @@
 #include "pipex.h"
 
-void	init_cmd(t_cmd *cmd)
-{
-	cmd->sep_path = NULL;
-	cmd->sep_cmd = NULL;
-}
-
 int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 {
 	int		i;

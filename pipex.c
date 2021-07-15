@@ -4,11 +4,9 @@ int	main(int argc, char *argv[], char **env)
 {
 	int		id;
 	int		fd[2];
-	t_cmd	cmd;
 
 	if (argc != 5)
 		return (0);
-	init_cmd(&cmd);
 	pipe(fd);
 	id = fork();
 	if (id > 0)
