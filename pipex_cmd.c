@@ -7,21 +7,22 @@ int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 
 	i = 0;
 	path = NULL;
-	cmd->sep_cmd = ft_split(cmd_str, ' ');
+	cmd->sep_cmd = ft_split(cmd_str, ' '); //malloc
 	if (cmd->sep_cmd == NULL)
 		return (-1);
-	while (env[i] != NULL && path == NULL)
+	while (env[i] != NULL && path != env[i]) //start of the string
 	{
-		path = ft_strstr(env[i], "PATH=");
+		path = ft_strstr(env[i], "PATH="); 
 		i++;
 	}
-	path = ft_strtrim(path, "PATH=");
-	cmd->sep_path = ft_split(path, ':');
+	path = ft_strtrim(path, "PATH="); //malloc
+	//ft_substr, remove first 5 chars.
+	cmd->sep_path = ft_split(path, ':'); //malloc
 	i = 0;
 	while (cmd->sep_path[i] != NULL)
 	{
-		cmd->sep_path[i] = ft_strjoin(cmd->sep_path[i], "/");
-		cmd->sep_path[i] = ft_strjoin(cmd->sep_path[i], cmd->sep_cmd[0]);
+		cmd->sep_path[i] = ft_strjoin(cmd->sep_path[i], "/"); //malloc
+		cmd->sep_path[i] = ft_strjoin(cmd->sep_path[i], cmd->sep_cmd[0]); //malloc
 		i++;
 	}
 	return (0);

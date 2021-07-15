@@ -26,3 +26,18 @@ int		get_command(char *cmd_str, char **env, t_cmd *cmd);
 void	do_command(char *argv, char **env);
 
 #endif
+
+
+/*
+
+pipex_cmd:
+        - what does strtrim do ? 
+			--> takes out every character in "reference set". not the exact string.
+        - strtrim might remove too much
+        - strstr looks for anywhere in the string not just the start (PATH could be found anywhere)
+        - cmd should not be an argument of do_command
+        - unfinished error handling
+
+problems:
+        - leaks, leaks everywhere
+*/
