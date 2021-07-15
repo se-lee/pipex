@@ -29,3 +29,10 @@ int	redirect_output(const char *file)
 	close(fd);
 	return (0);
 }
+
+void	pipe_flow(int *fd, int inout)
+{
+	dup2(fd[inout], inout);
+	close(fd[0]);
+	close(fd[1]);
+}

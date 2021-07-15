@@ -1,7 +1,7 @@
 HEADER	=	pipex.h
 SRCS	=	pipex.c \
 			pipex_cmd.c \
-			pipex_redirect.c\
+			pipex_redirect_pipe.c\
 
 BIN		= objs
 OBJS	= $(SRCS:.c=.o)
@@ -9,14 +9,14 @@ NAME	= pipex
 LIBFT	= libft
 LIBFT_FILE	= $(LIBFT)/libft.a
 CC		= gcc
-CFLAGS	= -g -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra
 RM		= rm -rf
 
 all:	init $(NAME)
 
 $(NAME): $(OBJS)
 	cp $(LIBFT_FILE) $(NAME)
-	ar rc $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 %.o:	%.c $(HEADER) $(LIBFT)/libft.h
 	$(CC) $(CFLAGS) -c $< -Iincludes -Ilibft -o $@

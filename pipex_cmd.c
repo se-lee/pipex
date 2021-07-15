@@ -1,5 +1,11 @@
 #include "pipex.h"
 
+void	init_cmd(t_cmd *cmd)
+{
+	cmd->sep_path = NULL;
+	cmd->sep_cmd = NULL;
+}
+
 int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 {
 	int		i;
@@ -27,10 +33,9 @@ int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 	return (0);
 }
 
-void	do_command(char *argv, char **env)
+void	do_command(char *argv, char **env, t_cmd cmd)
 {
 	int		i;
-	t_cmd cmd;
 	
 	get_command(argv, env, &cmd);
 	i = 0;
@@ -39,28 +44,4 @@ void	do_command(char *argv, char **env)
 		execve(cmd.sep_path[i], cmd.sep_cmd, env);
 		i++;
 	}
-	//error case ?
 }
-
-
-
-/*
-int	main(int argc, char *argv[])
-{
-	t_cmd	command;
-	
-	get_command(argv[1], &command);
-	printf("path: %s",command.path);	
-	do_command(command);
-
-	return (0);
-}
-*/
-
-/*
-difference between `` '' and " "??
- -> works with " " but doesnt work with `` ''
-
-if command and options (argv[1~]) don't match, display error
-
-*/
