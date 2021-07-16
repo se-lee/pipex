@@ -6,9 +6,13 @@ int	main(int argc, char *argv[], char **env)
 	int		fd[2];
 
 	if (argc != 5)
-		return (0);
-	pipe(fd); //do error
-	id = fork(); //do error
+		perror_exit("");
+	pipe(fd);		
+	if (pipe(fd) == -1)
+		perror_exit("pipe failed");
+	id = fork();
+	if (id == -1)
+		perror_exit("fork failed");
 	if (id > 0)
 	{
 		redirect_input(argv[FILE1]); //do error handling

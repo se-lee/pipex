@@ -1,14 +1,5 @@
 #include "pipex.h"
 
-void	ft_append(char **a, char *str)
-{
-	char	*result;
-
-	result = ft_strjoin(*a, str);
-	free(*a);
-	*a = result;
-}
-
 int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 {
 	int		i;
@@ -37,7 +28,7 @@ int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 	return (0);
 }
 
-void	do_command(char *argv, char **env)
+int	do_command(char *argv, char **env)
 {
 	int		i;
 	t_cmd	cmd;
@@ -47,9 +38,10 @@ void	do_command(char *argv, char **env)
 	while (cmd.sep_path[i] != NULL)
 	{
 		execve(cmd.sep_path[i], cmd.sep_cmd, env);
-		free(cmd.sep_path[i]);
 		i++;
 	}
-//free cmd;
-	perror(cmd.sep_cmd[0]);
+	perror_exit(cmd.sep_cmd[0]);
+	free_double(cmd.sep_path);  // ?? how to free when execve succeeds
+	free_double((char **)cmd.sep_cmd);
+	return (0);
 }

@@ -2,13 +2,14 @@ HEADER	=	pipex.h
 SRCS	=	pipex.c \
 			pipex_cmd.c \
 			pipex_redirect_pipe.c \
+			pipex_utils.c \
 
 OBJS	= $(SRCS:.c=.o)
 NAME	= pipex
 LIBFT	= libft
 LIBFT_FILE	= $(LIBFT)/libft.a
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -fsanitize=address
 RM		= rm -rf
 
 all:	init $(NAME)
