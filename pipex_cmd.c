@@ -12,7 +12,7 @@ int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 		return (-1);
 	while (env[i] != NULL && path == NULL && path != env[i])
 	{
-		path = ft_strstr(env[i], "PATH="); 
+		path = ft_strstr(env[i], "PATH=");
 		i++;
 	}
 	path = ft_substr(path, 5, (ft_strlen(path) - 5));
@@ -40,8 +40,8 @@ int	do_command(char *argv, char **env)
 		execve(cmd.sep_path[i], cmd.sep_cmd, env);
 		i++;
 	}
-	perror_exit(cmd.sep_cmd[0]);
-	free_double(cmd.sep_path);
+	perror_exit(cmd.sep_cmd[0]); //if execve fails, will exit(1). 
+	free_double(cmd.sep_path); //if exit(1), quits before free here?
 	free_double((char **)cmd.sep_cmd);
 	return (0);
 }

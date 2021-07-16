@@ -27,6 +27,7 @@ int		do_command(char *argv, char **env);
 void	ft_append(char **a, char *str);
 void	free_double(char **ptr);
 void	perror_exit(char *arg);
+int		process_parent(char *argv[], int *fd, char **env);
 
 #endif
 

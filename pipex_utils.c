@@ -27,3 +27,16 @@ void	free_double(char **ptr)
 	}
 	free(ptr);
 }
+
+
+// give up ~_~;
+int		process_parent(char *argv[], int *fd, char **env)
+{
+	if (redirect_input(argv[FILE1]) == -1)
+		return (-1);
+	if (pipe_flow(fd, STDOUT_FILENO) == -1)
+		return (-1);
+	if (do_command(argv[CMD1], env) == -1)
+		return (-1);
+	return (0);
+}
