@@ -24,6 +24,7 @@ int		redirect_output(const char *file);
 void	pipe_flow(int *fd, int inout);
 int		get_command(char *cmd_str, char **env, t_cmd *cmd);
 void	do_command(char *argv, char **env);
+void	ft_append(char **a, char *str);
 
 #endif
 

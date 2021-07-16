@@ -1,17 +1,25 @@
 #include "pipex.h"
 
+void	ft_append(char **a, char *str)
+{
+	char	*result;
+
+	result = ft_strjoin(*a, str);
+	free(*a);
+	*a = result;
+}
+
 int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 {
 	int		i;
 	char	*path;
-	char	*temp;
 
 	i = 0;
 	path = NULL;
-	cmd->sep_cmd = ft_split(cmd_str, ' '); //malloc
+	cmd->sep_cmd = ft_split(cmd_str, ' ');
 	if (cmd->sep_cmd == NULL)
 		return (-1);
-	while (env[i] != NULL && path == NULL && path != env[i]) //start of the string
+	while (env[i] != NULL && path == NULL && path != env[i])
 	{
 		path = ft_strstr(env[i], "PATH="); 
 		i++;
@@ -20,14 +28,10 @@ int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 	cmd->sep_path = ft_split(path, ':'); //malloc
 	free(path);
 	i = 0;
-	while (cmd->sep_path[i] != NULL) //sep_path malloc and free problem
-	{/*make a new function*/
-		temp = cmd->sep_path[i];
-		cmd->sep_path[i] = ft_strjoin(cmd->sep_path[i], "/"); //malloc
-		free(temp);
-		temp = cmd->sep_path[i];
-		cmd->sep_path[i] = ft_strjoin(cmd->sep_path[i], cmd->sep_cmd[0]); //malloc
-		free(temp);
+	while (cmd->sep_path[i] != NULL)
+	{
+		ft_append(&cmd->sep_path[i], "/");
+		ft_append(&cmd->sep_path[i], cmd->sep_cmd[0]);
 		i++;
 	}
 	return (0);
