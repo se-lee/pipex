@@ -7,8 +7,9 @@ int	redirect_input(const char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		perror_exit((char *)file);
+	dup2(fd, STDIN_FILENO);
 	if (dup2(fd, STDIN_FILENO) == -1)
-		return (-1);
+		perror_exit("dup2");
 	close(fd);
 	return (0);
 }
@@ -21,7 +22,7 @@ int	redirect_output(const char *file)
 	if (fd < 0)
 		perror_exit((char *)file);
 	if (dup2(fd, STDOUT_FILENO) == -1)
-	 	return (-1);
+		perror_exit("dup2");
 	close(fd);
 	return (0);
 }
@@ -29,7 +30,7 @@ int	redirect_output(const char *file)
 int	pipe_flow(int *fd, int inout)
 {
 	if (dup2(fd[inout], inout) == -1)
-		return (-1);
+		perror_exit("dup2");
 	close(fd[0]);
 	close(fd[1]);
 	return (0);

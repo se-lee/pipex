@@ -15,8 +15,8 @@ int	get_command(char *cmd_str, char **env, t_cmd *cmd)
 		path = ft_strstr(env[i], "PATH="); 
 		i++;
 	}
-	path = ft_substr(path, 5, (ft_strlen(path) - 5)); //malloc
-	cmd->sep_path = ft_split(path, ':'); //malloc
+	path = ft_substr(path, 5, (ft_strlen(path) - 5));
+	cmd->sep_path = ft_split(path, ':');
 	free(path);
 	i = 0;
 	while (cmd->sep_path[i] != NULL)
@@ -41,7 +41,7 @@ int	do_command(char *argv, char **env)
 		i++;
 	}
 	perror_exit(cmd.sep_cmd[0]);
-	free_double(cmd.sep_path);  // ?? how to free when execve succeeds
+	free_double(cmd.sep_path);
 	free_double((char **)cmd.sep_cmd);
 	return (0);
 }

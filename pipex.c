@@ -6,22 +6,22 @@ int	main(int argc, char *argv[], char **env)
 	int		fd[2];
 
 	if (argc != 5)
-		perror_exit("");
+		perror_exit("argc");
 	pipe(fd);		
 	if (pipe(fd) == -1)
-		perror_exit("pipe failed");
+		perror_exit("pipe");
 	id = fork();
 	if (id == -1)
-		perror_exit("fork failed");
+		perror_exit("fork");
 	if (id > 0)
 	{
-		redirect_input(argv[FILE1]); //do error handling
+		redirect_input(argv[FILE1]);
 		pipe_flow(fd, STDOUT_FILENO);
 		do_command(argv[CMD1], env);
 	}
 	else if (id == 0)
 	{
-		redirect_output(argv[FILE2]); //do error handling
+		redirect_output(argv[FILE2]);
 		pipe_flow(fd, STDIN_FILENO);
 		do_command(argv[CMD2], env);
 	}

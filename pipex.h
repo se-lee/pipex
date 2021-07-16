@@ -28,19 +28,9 @@ void	ft_append(char **a, char *str);
 void	free_double(char **ptr);
 void	perror_exit(char *arg);
 
-
-
 #endif
 
 /*
 pipex_cmd:
-        - what does strtrim do ? 
-			--> takes out every character in "reference set". not the exact string.
-        - strtrim might remove too much
-        - strstr looks for anywhere in the string not just the start (PATH could be found anywhere)
-        - cmd should not be an argument of do_command
         - unfinished error handling
-
-problems:
-        - leaks, leaks everywhere
 */
